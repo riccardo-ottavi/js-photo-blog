@@ -1,7 +1,12 @@
+/*REGOLE GENERALI*/
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-image: url("../img/cork.png");
 }
 
 h1 {
@@ -10,16 +15,42 @@ h1 {
 }
 
 header {
-    /*DEBUG*/
-    
     height: 160px;
-
     text-align: center;
     background-image: url("../img/wall.png");
 }
 
-.container {
-    /*DEBUG*/
-    background-color: yellow;
-    height: 780px;
+
+/*SEZIONE CON FOTO*/
+.big-container {
+    width: 67%;
+    margin: 0 auto;
+    margin-top: 65px;
+}
+
+.col{
+    width: calc((100% /3) - (45px / 3 ));
+}
+
+.row {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 45px;
+    
+}
+
+.card{
+    background-color: white;
+    
+}
+
+.card-text{
+    height: 122px;
+}
+
+.card-img img {
+    width: 260px;
+    height: 260px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
