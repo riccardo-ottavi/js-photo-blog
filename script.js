@@ -7,7 +7,6 @@ const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
 
 //chiamata APIs
-
 axios.get(myEndPoint).then(risposta => {
         //successo
 
