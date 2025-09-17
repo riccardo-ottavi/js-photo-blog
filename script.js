@@ -2,6 +2,7 @@
 const picOut = document.querySelectorAll(".card-img");
 const titleOut = document.querySelectorAll(".card-text-title");
 const dateOut = document.querySelectorAll(".card-text-date");
+const cards = document.querySelectorAll(".card");
 //inizializza endpoint
 const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
@@ -23,14 +24,23 @@ axios.get(myEndPoint).then(risposta => {
     })
 
 //gestione hover
+cards.forEach(card=> {
+    card.addEventListener("mouseenter",
+    function(){
+    console.log("mouse entrato");  
+    });  
+});
+
+cards.forEach(card => {
+    card.addEventListener("mouseleave",
+    function(){
+    console.log("mouse uscito");  
+    });  
+});
+ 
 
 
 
-    //---------funzioni---------
-
-    function manageHover(){
-        
-    }
 
 
     //manda in pagina gli oggetti passati 

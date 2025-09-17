@@ -77,11 +77,11 @@ header {
 }
 
 /*hover*/
-.card-img:hover img{
+.card-hover{
     transform: scale(2.5);
 }
 
-.col:hover .dot img{
+.dot-hover{
     display: none;
 }
 
