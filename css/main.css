@@ -5,5 +5,21 @@
 }
 
 h1 {
-    color: red;
+    padding-top: 50px;
+    font-size: 48px;
+}
+
+header {
+    /*DEBUG*/
+    
+    height: 160px;
+
+    text-align: center;
+    background-image: url("../img/wall.png");
+}
+
+.container {
+    /*DEBUG*/
+    background-color: yellow;
+    height: 780px;
 }
