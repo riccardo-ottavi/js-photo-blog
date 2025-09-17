@@ -26,7 +26,7 @@ header {
 .big-container {
     width: 67%;
     margin: 0 auto;
-    margin-top: 65px;
+    margin-top: 55px;
     
 }
 
@@ -46,12 +46,12 @@ header {
 .row {
     display: flex;
     gap: 45px;
-    margin-bottom: 45px;
+    margin-bottom: 15px;
 }
 
 .card{
     background-color: white;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .card-text-box{
