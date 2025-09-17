@@ -17,6 +17,8 @@ axios.get(myEndPoint).then(risposta => {
     console.log("successo", myApis);
     //mando in pagina i dati ricevuti
     displayData(myApis);
+    let pics = document.querySelectorAll(".trip-pic");
+    eventHandler(pics);
 })
     .catch(error => {
         console.error(error);
@@ -46,21 +48,18 @@ function displayData(data) {
                         <span>${data[i].date}</span> 
                     `
     }
-    //seleziona le immagini appena create
-    const pics = document.querySelectorAll(".trip-pic");
     //crea ed assegna gli event listener
-    eventHandler();
 }
 
-function eventHandler(){
-    for (let i = 0; i < pics.length; i++ ){
+function eventHandler(element){
+    for (let i = 0; i < element.length; i++ ){
         cards[i].addEventListener("mouseenter",
              function () {
                     console.log("mouse entrato su " + (i+1));
             });
     };
 
-    for (let i = 0; i < pics.length; i++ ){
+    for (let i = 0; i < element.length; i++ ){
         cards[i].addEventListener("mouseleave",
              function () {
                     console.log("mouse uscito da " + (i+1));
