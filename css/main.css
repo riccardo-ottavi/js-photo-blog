@@ -37,6 +37,7 @@ header {
     position: relative;
     left: 137px;
     top: 20px;
+    display: inline-block;
 }
 
 .col{
@@ -74,3 +75,13 @@ header {
 .card-text-date{
     font-family:"Sometype Mono", "monospace";
 }
+
+/*hover*/
+.card-img:hover img{
+    transform: scale(2.5);
+}
+
+.col:hover .dot img{
+    display: none;
+}
+

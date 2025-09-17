@@ -22,8 +22,16 @@ axios.get(myEndPoint).then(risposta => {
         console.error(error);
     })
 
+//gestione hover
+
+
 
     //---------funzioni---------
+
+    function manageHover(){
+        
+    }
+
 
     //manda in pagina gli oggetti passati 
     function displayData(data){
