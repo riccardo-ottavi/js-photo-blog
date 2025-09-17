@@ -10,8 +10,9 @@ body{
 }
 
 h1 {
-    padding-top: 50px;
-    font-size: 48px;
+    padding-top: 20px;
+    font-size: 95px;
+    font-family:"Edu Tas Beginner", sans-serif;
 }
 
 header {
@@ -26,6 +27,17 @@ header {
     width: 67%;
     margin: 0 auto;
     margin-top: 65px;
+    
+}
+
+.dot{
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 33px;
+    position: relative;
+    left: 137px;
+    top: 15px;
 }
 
 .col{
@@ -36,23 +48,23 @@ header {
     display: flex;
     gap: 45px;
     margin-bottom: 45px;
-    
 }
 
 .card{
     background-color: white;
-    
+    padding-top: 20px;
 }
 
 .card-text-box{
-    height: 122px;
+    height: 80px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .card-img img {
     width: 260px;
     height: 260px;
     margin-left: 20px;
-    margin-top: 20px;
 }
 
 .card-text-title{
