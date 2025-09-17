@@ -78,7 +78,8 @@ header {
 
 /*hover*/
 .trip-pic:hover{
-    transform: scale(2);
+    transform: scale(2.5);
+    box-shadow: 20px 20px 140px 110px rgba(0, 0, 0, 0.8);
 }
 
 .dot-hover{
