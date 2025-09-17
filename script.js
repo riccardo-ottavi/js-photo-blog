@@ -1,4 +1,4 @@
-//seleziono i div delle immagini
+//seleziona gli out
 const picOut = document.querySelectorAll(".card-img");
 const titleOut = document.querySelectorAll(".card-text-title");
 const dateOut = document.querySelectorAll(".card-text-date");
@@ -7,36 +7,42 @@ const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
 
 
+
+//----------main------------
 //chiamata APIs
 axios.get(myEndPoint).then(risposta => {
         //successo
-
         //estrapolo i dati
         let myApis = risposta.data;   
         console.log("successo",myApis);
         //mando in pagina i dati ricevuti
+        displayData(myApis);
+    })
+    .catch(error => {
+        console.error(error);
+    })
+
+
+    //---------funzioni---------
+
+    //manda in pagina gli oggetti passati 
+    function displayData(data){
         for (let i = 0; i < picOut.length; i++){
             //mando in pagina l'immagine
             picOut[i].innerHTML = 
                     `
-                        <img src="${myApis[i].url}" alt=""> 
+                        <img src="${data[i].url}" alt=""> 
                     `
             //mando in pagina il titolo        
             titleOut[i].innerHTML =
                     `
-                        <span>${myApis[i].title}</span> 
+                        <span>${data[i].title}</span> 
                     `
 
             //mando in pagina il titolo        
             dateOut[i].innerHTML =
                     `
-                        <span>${myApis[i].date}</span> 
+                        <span>${data[i].date}</span> 
                     `
         }   
-        
-
-       
-    })
-    .catch(error => {
-        console.error(error);
-    })
+    }

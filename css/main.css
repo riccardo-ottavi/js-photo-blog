@@ -54,3 +54,11 @@ header {
     margin-left: 20px;
     margin-top: 20px;
 }
+
+.card-text-title{
+    font-family:"Edu Tas Beginner", sans-serif;
+}
+
+.card-text-date{
+    font-family:"Sometype Mono", "monospace";
+}
