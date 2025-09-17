@@ -77,8 +77,8 @@ header {
 }
 
 /*hover*/
-.card-hover{
-    transform: scale(2.5);
+.trip-pic:hover{
+    transform: scale(2);
 }
 
 .dot-hover{
