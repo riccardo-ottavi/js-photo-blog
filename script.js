@@ -7,9 +7,8 @@ const cards = document.querySelectorAll(".card");
 const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
 
-
-
 //----------main------------
+
 //chiamata API
 axios.get(myEndPoint).then(risposta => {
     //successo
@@ -23,6 +22,8 @@ axios.get(myEndPoint).then(risposta => {
         console.error(error);
     })
 
+
+//-------funzioni-----------
 
 //manda in pagina i dati ricevuti 
 function displayData(data) {
@@ -48,6 +49,10 @@ function displayData(data) {
     //seleziona le immagini appena create
     const pics = document.querySelectorAll(".trip-pic");
     //crea ed assegna gli event listener
+    eventHandler();
+}
+
+function eventHandler(){
     for (let i = 0; i < pics.length; i++ ){
         cards[i].addEventListener("mouseenter",
              function () {
@@ -62,5 +67,3 @@ function displayData(data) {
             });
     };
 }
-
-
