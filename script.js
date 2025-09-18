@@ -12,7 +12,6 @@ const closeBtn = document.getElementById("close-overlay");
 //inizializza endpoint
 const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
-
 //----------main------------
 //chiamata API
 axios.get(myEndPoint).then(risposta => {
@@ -25,7 +24,7 @@ axios.get(myEndPoint).then(risposta => {
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
     eventHandlerHover(pics, dots);
-    eventHandlerClick(pics, closeBtn, overlay, pins);
+    eventHandlerClick(pics, closeBtn, overlay, pins, cards);
 })
     .catch(error => {
         console.error(error);
@@ -45,32 +44,32 @@ function displayData(data) {
     }
 }
 //aggiunge gli eventi per gestire l'hover 
-function eventHandlerHover(pics, dots){
-    //non forEach perché serve salvare i
-    //event listener per quando entra il mouse 
-    for (let i = 0; i < pics.length; i++ ){
-        cards[i].addEventListener("mouseenter",
-             function () {
-                    console.log("mouse entrato su " + (i+1));
+function eventHandlerHover(pics, dots) {
+        //non forEach perché serve salvare i
+        //event listener per quando entra il mouse 
+        for (let i = 0; i < pics.length; i++) {
+            cards[i].addEventListener("mouseenter",
+                function () {
+                    console.log("mouse entrato su " + (i + 1));
                     //crea e assegna ai pin la classe per l'hover
                     dots.forEach(dots => {
                         dots.classList.add("dot-hover");
-                    });   
-            });
-    };
-    //event listener per quando esce il mouse 
-    for (let i = 0; i < pics.length; i++ ){
-        cards[i].addEventListener("mouseleave",
-             function () {
-                    console.log("mouse uscito da " + (i+1));
-                    //rimuove dai pin la classe per l'hover
+                    });
+                });
+        };
+        //event listener per quando esce il mouse 
+        for (let i = 0; i < pics.length; i++) {
+            cards[i].addEventListener("mouseleave",
+                function () {
+                    console.log("mouse uscito da " + (i + 1));
+                    //rimuove dai pin la classe che lo nasconde
                     dots.forEach(dots => {
                         dots.classList.remove("dot-hover");
                     });
-            });
-    };
-}    
-function eventHandlerClick(pics, closeBtn, overlay, pins) {
+                });
+        };
+}
+function eventHandlerClick(pics, closeBtn, overlay, pins, cards) {
     let selectedPic =[];
     let selectedCardIndex = null;
     //event listener per quando clicchi su una card
@@ -80,12 +79,14 @@ function eventHandlerClick(pics, closeBtn, overlay, pins) {
                 //salva la card cliccata 
                 selectedCardIndex = i;
                 console.log("hai cliccato la card numero: " + selectedCardIndex + (i + 1));
-                //apri overlay
+                //mostra l' overlay
                 overlay.setAttribute("style", "display: block");
                 pics[i].classList.add("selected-event");
                 selectedPic = pics[i];
+                //nascondo il pin della card selezionata
                 pins[selectedCardIndex].setAttribute("style", "display: none");
                 console.log(pins[i]);
+                cards[selectedCardIndex].setAttribute("style", "transform: none");       
             })
     };
 
@@ -93,11 +94,17 @@ function eventHandlerClick(pics, closeBtn, overlay, pins) {
     closeBtn.addEventListener("click",
         function () {
             overlay.setAttribute("style", "display: none");
-            console.log("siamo qua");
             selectedPic.classList.remove("selected-event");
-            pins[selectedCardIndex].setAttribute("style", "display: block");
+            //resetta le proprietà per far funzionare hover
+            for (let i = 0; i < pins.length; i++) {
+                pins[selectedCardIndex].style.removeProperty("display");
+                cards[selectedCardIndex].style.removeProperty("transform"); 
+            };
+
+             
         }
     )
+    
 };
     
     
