@@ -43,36 +43,36 @@ function displayData(data) {
 }
 
 //aggiunge gli eventi per gestire l'hover 
-function eventHandler(element, element2, element3, data){
+function eventHandler(pics, dots, mainBox, data){
     //non forEach perché serve salvare i
 
     //event listener per quando entra il mouse 
-    for (let i = 0; i < element.length; i++ ){
+    for (let i = 0; i < pics.length; i++ ){
         cards[i].addEventListener("mouseenter",
              function () {
                     console.log("mouse entrato su " + (i+1));
                     //crea e assegna ai pin la classe per l'hover
-                    element2.forEach(element2 => {
-                        element2.classList.add("dot-hover");
+                    dots.forEach(dots => {
+                        dots.classList.add("dot-hover");
                     });
                     
             });
     };
 
     //event listener per quando esce il mouse 
-    for (let i = 0; i < element.length; i++ ){
+    for (let i = 0; i < pics.length; i++ ){
         cards[i].addEventListener("mouseleave",
              function () {
                     console.log("mouse uscito da " + (i+1));
                     //rimuove dai pin la classe per l'hover
-                    element2.forEach(element2 => {
-                        element2.classList.remove("dot-hover");
+                    dots.forEach(dots => {
+                        dots.classList.remove("dot-hover");
                     });
             });
     };
 
     //event listener per quando clicchi su una card
-    for (let i = 0; i < element.length; i++ ){
+    for (let i = 0; i < pics.length; i++ ){
         cards[i].addEventListener("click",
              function () {
                 //salva la card cliccata 
