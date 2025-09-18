@@ -19,7 +19,7 @@ axios.get(myEndPoint).then(risposta => {
     //seleziono le pics appena create e creo gli eventi
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
-    eventHandler(pics, dots, mainBox);
+    eventHandler(pics, dots, mainBox, myApis);
 })
     .catch(error => {
         console.error(error);
@@ -41,7 +41,7 @@ function displayData(data) {
 }
 
 //aggiunge gli eventi per gestire l'hover 
-function eventHandler(element, element2, element3){
+function eventHandler(element, element2, element3, data){
     //non forEach perché serve salvare i
 
     //event listener per quando entra il mouse 
@@ -73,8 +73,15 @@ function eventHandler(element, element2, element3){
     for (let i = 0; i < element.length; i++ ){
         cards[i].addEventListener("click",
              function () {
+                //salva la card cliccata 
+                    let selectedCard = i;
                     console.log("carta cliccata " + (i+1));
+                    //il contenitore guadagna una classe per gestire la dimensione della big pic
                     mainBox.classList.add("selected-event");
+                    console.log(data[selectedCard]);
+                    //assegno al bg del big box l'url dell'immagine corrispondente alla card cliccata
+                    mainBox.setAttribute("style", `background-image: url(${data[selectedCard].url});`);
+                    console.log(mainBox.classList);
             });
     };
 

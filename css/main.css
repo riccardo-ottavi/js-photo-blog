@@ -30,8 +30,8 @@ header {
 }
 
 .selected-event{
-    background-image: url("../img/mountains.png");
     background-size: cover;
+    background-image: url("../img/mountains.png");
 }
 
 .dot{
