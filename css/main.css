@@ -59,6 +59,9 @@ header {
     z-index: 9999;
 
 }
+.dot{
+    height: 150px;
+}
 
 /*dopo usala per snellire*/
 .hidden {
@@ -128,6 +131,7 @@ header {
 
 .card-small-rotate:hover {
     transform: rotate(10deg);
+
 }
 
 .dot-hover{

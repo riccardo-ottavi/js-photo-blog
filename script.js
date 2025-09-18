@@ -23,7 +23,7 @@ axios.get(myEndPoint).then(risposta => {
     //seleziono le pics appena create e creo gli eventi
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
-    eventHandlerHover(pics, dots);
+    eventHandlerHover(pics, dots, pins);
     eventHandlerClick(pics, closeBtn, overlay, pins, cards);
 })
     .catch(error => {
@@ -44,7 +44,7 @@ function displayData(data) {
     }
 }
 //aggiunge gli eventi per gestire l'hover 
-function eventHandlerHover(pics, dots) {
+function eventHandlerHover(pics, dots, pins) {
         //non forEach perché serve salvare i
         //event listener per quando entra il mouse 
         for (let i = 0; i < pics.length; i++) {
@@ -54,8 +54,8 @@ function eventHandlerHover(pics, dots) {
                     cards[i].classList.add("card-small-rotate");
                     console.log("mouse entrato su " + (i + 1));
                     //crea e assegna ai pin la classe per l'hover
-                    dots.forEach(dots => {
-                        dots.classList.add("dot-hover");
+                    dots.forEach(dot => {
+                        dot.classList.add("dot-hover");
                     });
                 });
         };
