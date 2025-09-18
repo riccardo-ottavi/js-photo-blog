@@ -77,9 +77,9 @@ header {
 }
 
 /*hover*/
-.trip-pic:hover{
-    transform: scale(2.5);
-    box-shadow: 20px 20px 140px 110px rgba(0, 0, 0, 0.8);
+.card:hover{
+    transform: rotate(10deg);
+    box-shadow: 10px 10px 14px 11px rgba(0, 0, 0, 0.8);
 }
 
 .dot-hover{
