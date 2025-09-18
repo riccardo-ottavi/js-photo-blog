@@ -21,7 +21,8 @@ axios.get(myEndPoint).then(risposta => {
     //seleziono le pics appena create e creo gli eventi
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
-    eventHandler(pics, dots, mainBox, myApis);
+    eventHandlerHover(pics, dots);
+    eventHandlerClick(pics, mainBox, myApis);
 })
     .catch(error => {
         console.error(error);
@@ -42,8 +43,12 @@ function displayData(data) {
     }
 }
 
+
+
+
+
 //aggiunge gli eventi per gestire l'hover 
-function eventHandler(pics, dots, mainBox, data){
+function eventHandlerHover(pics, dots){
     //non forEach perché serve salvare i
 
     //event listener per quando entra il mouse 
@@ -58,6 +63,7 @@ function eventHandler(pics, dots, mainBox, data){
                     
             });
     };
+    
 
     //event listener per quando esce il mouse 
     for (let i = 0; i < pics.length; i++ ){
@@ -71,28 +77,31 @@ function eventHandler(pics, dots, mainBox, data){
             });
     };
 
+}    
+
+function eventHandlerClick(pics,mainBox, myApis) {
     //event listener per quando clicchi su una card
-    for (let i = 0; i < pics.length; i++ ){
+    for (let i = 0; i < pics.length; i++) {
         cards[i].addEventListener("click",
-             function () {
+            function () {
                 //salva la card cliccata 
-                    let selectedCard = i;
-                    console.log("carta cliccata " + (i+1));
-                    //il contenitore guadagna una classe per gestire la dimensione della big pic
-                    mainBox.classList.add("selected-event");
-                    console.log(data[selectedCard]);
-                    //assegno al bg del big box l'url dell'immagine corrispondente alla card cliccata
-                    mainBox.setAttribute("style", `background-image: url(${data[selectedCard].url});`);
-                    console.log(mainBox.classList);
-                    //scompaiono le cards e i dots
-                    cards.forEach(card => {
-                        card.classList.add("hidden");
-                    });
-                    pins.forEach(pins => {
-                        pins.classList.add("hidden");
-                    });
+                let selectedCard = i;
+                console.log("carta cliccata " + (i + 1));
+                //il contenitore guadagna una classe per gestire la dimensione della big pic
+                mainBox.classList.add("selected-event");
+                console.log(myApis[selectedCard]);
+                //assegno al bg del big box l'url dell'immagine corrispondente alla card cliccata
+                mainBox.setAttribute("style", `background-image: url(${myApis[selectedCard].url});`);
+                console.log(mainBox.classList);
+                //scompaiono le cards e i dots
+                cards.forEach(card => {
+                    card.classList.add("hidden");
+                });
+                pins.forEach(pins => {
+                    pins.classList.add("hidden");
+                });
             });
     };
-
 }
+
 
