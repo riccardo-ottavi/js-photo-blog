@@ -29,6 +29,12 @@ header {
     margin-top: 55px;
 }
 
+#close-overlay{
+    border: 1px solid black;
+    padding: 15px;
+    background-color: wheat;
+}
+
 .hidden-overlay {
   position: fixed;
   display: none;
@@ -44,7 +50,9 @@ header {
 }
 
 .selected-event{
-    transform: scale(2.5);
+    transform: rotate(0);
+    transform: scale(2);
+    
 }
 
 /*dopo usala per snellire*/

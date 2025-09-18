@@ -8,6 +8,7 @@ const pins = document.querySelectorAll(".pin");
 const title = document.getElementById("title");
 const myBody = document.getElementsByTagName("body");
 const overlay = document.querySelector(".hidden-overlay");
+const closeBtn = document.getElementById("close-overlay");
 //inizializza endpoint
 const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
@@ -24,7 +25,7 @@ axios.get(myEndPoint).then(risposta => {
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
     eventHandlerHover(pics, dots);
-    eventHandlerClick(pics, mainBox, myApis, title);
+    eventHandlerClick(pics, closeBtn, overlay, pins);
 })
     .catch(error => {
         console.error(error);
@@ -69,19 +70,38 @@ function eventHandlerHover(pics, dots){
             });
     };
 }    
-function eventHandlerClick(pics) {
+function eventHandlerClick(pics, closeBtn, overlay, pins) {
+    let selectedPic =[];
+    let selectedCardIndex = null;
     //event listener per quando clicchi su una card
     for (let i = 0; i < pics.length; i++) {
         cards[i].addEventListener("click",
             function () {
                 //salva la card cliccata 
-                let selectedCard = i;
-                console.log("hai cliccato la card numero: " + selectedCard + (i+1));
-                overlay.setAttribute("style","display: block");
+                selectedCardIndex = i;
+                console.log("hai cliccato la card numero: " + selectedCardIndex + (i + 1));
+                //apri overlay
+                overlay.setAttribute("style", "display: block");
                 pics[i].classList.add("selected-event");
-
-            });
+                selectedPic = pics[i];
+                pins[selectedCardIndex].setAttribute("style", "display: none");
+                console.log(pins[i]);
+            })
     };
-}
+
+    //evento per chiudere overlay
+    closeBtn.addEventListener("click",
+        function () {
+            overlay.setAttribute("style", "display: none");
+            console.log("siamo qua");
+            selectedPic.classList.remove("selected-event");
+            pins[selectedCardIndex].setAttribute("style", "display: block");
+        }
+    )
+};
+    
+    
 
 
+    
+                
