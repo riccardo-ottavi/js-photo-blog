@@ -36,7 +36,7 @@ axios.get(myEndPoint).then(risposta => {
 function displayData(data) {
     for (let i = 0; i < picOut.length; i++) {
         //manda in pagina l'immagine
-        picOut[i].innerHTML = `<img src="${data[i].url}" alt="" class="trip-pic">`
+        picOut[i].innerHTML = `<img src="${data[i].url}" alt="" class="trip-pic img-small-hover">`
         //manda in pagina il titolo        
         titleOut[i].innerHTML =`<span>${data[i].title}</span>`
         //manda in pagina il titolo        
@@ -50,6 +50,8 @@ function eventHandlerHover(pics, dots) {
         for (let i = 0; i < pics.length; i++) {
             cards[i].addEventListener("mouseenter",
                 function () {
+                    cards[i].classList.add("card-small-transform");
+                    cards[i].classList.add("card-small-rotate");
                     console.log("mouse entrato su " + (i + 1));
                     //crea e assegna ai pin la classe per l'hover
                     dots.forEach(dots => {
@@ -62,6 +64,8 @@ function eventHandlerHover(pics, dots) {
             cards[i].addEventListener("mouseleave",
                 function () {
                     console.log("mouse uscito da " + (i + 1));
+                    cards[i].classList.remove("card-small-transform");
+                    cards[i].classList.remove("card-small-rotate");
                     //rimuove dai pin la classe che lo nasconde
                     dots.forEach(dots => {
                         dots.classList.remove("dot-hover");
@@ -76,16 +80,19 @@ function eventHandlerClick(pics, closeBtn, overlay, pins, cards) {
     for (let i = 0; i < pics.length; i++) {
         cards[i].addEventListener("click",
             function () {
+                cards[i].classList.remove("card-small-transform");
+                cards[i].classList.remove("card-small-rotate");
                 //salva la card cliccata 
                 selectedCardIndex = i;
+                //resetta l'hover che nell
                 console.log("hai cliccato la card numero: " + selectedCardIndex + (i + 1));
                 //mostra l' overlay
                 overlay.setAttribute("style", "display: block");
                 pics[i].classList.add("selected-event");
                 selectedPic = pics[i];
+                pics[i].classList.remove("img-small-hover");
                 //nascondo il pin della card selezionata
                 pins[selectedCardIndex].setAttribute("style", "display: none");
-                console.log(pins[i]);
                 cards[selectedCardIndex].setAttribute("style", "transform: none");       
             })
     };
@@ -93,14 +100,17 @@ function eventHandlerClick(pics, closeBtn, overlay, pins, cards) {
     //evento per chiudere overlay
     closeBtn.addEventListener("click",
         function () {
+            cards[selectedCardIndex].classList.add("card-small-rotate");
+            cards[selectedCardIndex].classList.add("card-small-transform");
             overlay.setAttribute("style", "display: none");
             selectedPic.classList.remove("selected-event");
             //resetta le proprietà per far funzionare hover
             for (let i = 0; i < pins.length; i++) {
                 pins[selectedCardIndex].style.removeProperty("display");
                 cards[selectedCardIndex].style.removeProperty("transform"); 
+                pics[selectedCardIndex].classList.add("img-small-hover");
             };
-
+            
              
         }
     )
