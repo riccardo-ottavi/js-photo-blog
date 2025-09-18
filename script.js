@@ -5,7 +5,9 @@ const titleOut = document.querySelectorAll(".card-text-title");
 const dateOut = document.querySelectorAll(".card-text-date");
 const cards = document.querySelectorAll(".card");
 const pins = document.querySelectorAll(".pin");
-console.log(pins);
+const title = document.getElementById("title");
+const myBody = document.getElementsByTagName("body");
+const overlay = document.querySelector(".hidden-overlay");
 //inizializza endpoint
 const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
@@ -22,7 +24,7 @@ axios.get(myEndPoint).then(risposta => {
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
     eventHandlerHover(pics, dots);
-    eventHandlerClick(pics, mainBox, myApis);
+    eventHandlerClick(pics, mainBox, myApis, title);
 })
     .catch(error => {
         console.error(error);
@@ -30,7 +32,6 @@ axios.get(myEndPoint).then(risposta => {
 
 
 //-------funzioni-----------
-
 //manda in pagina i dati ricevuti 
 function displayData(data) {
     for (let i = 0; i < picOut.length; i++) {
@@ -42,15 +43,9 @@ function displayData(data) {
         dateOut[i].innerHTML =`<span>${data[i].date}</span>`
     }
 }
-
-
-
-
-
 //aggiunge gli eventi per gestire l'hover 
 function eventHandlerHover(pics, dots){
     //non forEach perché serve salvare i
-
     //event listener per quando entra il mouse 
     for (let i = 0; i < pics.length; i++ ){
         cards[i].addEventListener("mouseenter",
@@ -59,12 +54,9 @@ function eventHandlerHover(pics, dots){
                     //crea e assegna ai pin la classe per l'hover
                     dots.forEach(dots => {
                         dots.classList.add("dot-hover");
-                    });
-                    
+                    });   
             });
     };
-    
-
     //event listener per quando esce il mouse 
     for (let i = 0; i < pics.length; i++ ){
         cards[i].addEventListener("mouseleave",
@@ -76,30 +68,18 @@ function eventHandlerHover(pics, dots){
                     });
             });
     };
-
 }    
-
-function eventHandlerClick(pics,mainBox, myApis) {
+function eventHandlerClick(pics) {
     //event listener per quando clicchi su una card
     for (let i = 0; i < pics.length; i++) {
         cards[i].addEventListener("click",
             function () {
                 //salva la card cliccata 
                 let selectedCard = i;
-                console.log("carta cliccata " + (i + 1));
-                //il contenitore guadagna una classe per gestire la dimensione della big pic
-                mainBox.classList.add("selected-event");
-                console.log(myApis[selectedCard]);
-                //assegno al bg del big box l'url dell'immagine corrispondente alla card cliccata
-                mainBox.setAttribute("style", `background-image: url(${myApis[selectedCard].url});`);
-                console.log(mainBox.classList);
-                //scompaiono le cards e i dots
-                cards.forEach(card => {
-                    card.classList.add("hidden");
-                });
-                pins.forEach(pins => {
-                    pins.classList.add("hidden");
-                });
+                console.log("hai cliccato la card numero: " + selectedCard + (i+1));
+                overlay.setAttribute("style","display: block");
+                pics[i].classList.add("selected-event");
+
             });
     };
 }

@@ -29,11 +29,22 @@ header {
     margin-top: 55px;
 }
 
+.hidden-overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.61);
+  z-index: 9999;
+  cursor: pointer;
+}
+
 .selected-event{
-    background-size: cover;
-    background-image: url("../img/mountains.png");
-    height: 500px;
-    width: 500px;
+    transform: scale(2.5);
 }
 
 /*dopo usala per snellire*/
@@ -49,16 +60,11 @@ header {
     left: 137px;
     top: 20px;
     display: inline-block;
+    z-index: 2;
 }
 
 .col{
     width: calc((100% /3) - (45px / 3 ));
-}
-
-.hidden-overlay {
-    background-color: rgba(0, 0, 0, 0);
-    height: 100%;
-    width: 100%;
 }
 
 .row {
@@ -96,7 +102,7 @@ header {
 /*hover*/
 .card:hover{
     transform: rotate(10deg);
-    box-shadow: 10px 10px 14px 11px rgba(0, 0, 0, 0.8);
+    box-shadow: 10px 10px 14px 11px rgba(0, 0, 0, 0.918);
 }
 
 .dot-hover{
