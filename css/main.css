@@ -27,7 +27,11 @@ header {
     width: 67%;
     margin: 0 auto;
     margin-top: 55px;
-    
+}
+
+.selected-event{
+    background-image: url("../img/mountains.png");
+    background-size: cover;
 }
 
 .dot{
@@ -42,6 +46,12 @@ header {
 
 .col{
     width: calc((100% /3) - (45px / 3 ));
+}
+
+.hidden-overlay {
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
 }
 
 .row {

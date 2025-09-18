@@ -1,4 +1,5 @@
 //seleziona gli out
+const mainBox = document.querySelector(".big-container");
 const picOut = document.querySelectorAll(".card-img");
 const titleOut = document.querySelectorAll(".card-text-title");
 const dateOut = document.querySelectorAll(".card-text-date");
@@ -18,7 +19,7 @@ axios.get(myEndPoint).then(risposta => {
     //seleziono le pics appena create e creo gli eventi
     let pics = document.querySelectorAll(".trip-pic");
     let dots = document.querySelectorAll(".pin");
-    eventHandler(pics, dots);
+    eventHandler(pics, dots, mainBox);
 })
     .catch(error => {
         console.error(error);
@@ -40,8 +41,10 @@ function displayData(data) {
 }
 
 //aggiunge gli eventi per gestire l'hover 
-function eventHandler(element, element2){
+function eventHandler(element, element2, element3){
     //non forEach perché serve salvare i
+
+    //event listener per quando entra il mouse 
     for (let i = 0; i < element.length; i++ ){
         cards[i].addEventListener("mouseenter",
              function () {
@@ -54,6 +57,7 @@ function eventHandler(element, element2){
             });
     };
 
+    //event listener per quando esce il mouse 
     for (let i = 0; i < element.length; i++ ){
         cards[i].addEventListener("mouseleave",
              function () {
@@ -64,4 +68,15 @@ function eventHandler(element, element2){
                     });
             });
     };
+
+    //event listener per quando clicchi su una card
+    for (let i = 0; i < element.length; i++ ){
+        cards[i].addEventListener("click",
+             function () {
+                    console.log("carta cliccata " + (i+1));
+                    mainBox.classList.add("selected-event");
+            });
+    };
+
 }
+
