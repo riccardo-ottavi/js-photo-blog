@@ -32,6 +32,13 @@ header {
 .selected-event{
     background-size: cover;
     background-image: url("../img/mountains.png");
+    height: 500px;
+    width: 500px;
+}
+
+/*dopo usala per snellire*/
+.hidden {
+    display: none;
 }
 
 .dot{

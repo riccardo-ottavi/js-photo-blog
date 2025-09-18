@@ -4,6 +4,8 @@ const picOut = document.querySelectorAll(".card-img");
 const titleOut = document.querySelectorAll(".card-text-title");
 const dateOut = document.querySelectorAll(".card-text-date");
 const cards = document.querySelectorAll(".card");
+const pins = document.querySelectorAll(".pin");
+console.log(pins);
 //inizializza endpoint
 const myEndPoint = "https://lanciweb.github.io/demo/api/pictures/";
 
@@ -82,6 +84,13 @@ function eventHandler(element, element2, element3, data){
                     //assegno al bg del big box l'url dell'immagine corrispondente alla card cliccata
                     mainBox.setAttribute("style", `background-image: url(${data[selectedCard].url});`);
                     console.log(mainBox.classList);
+                    //scompaiono le cards e i dots
+                    cards.forEach(card => {
+                        card.classList.add("hidden");
+                    });
+                    pins.forEach(pins => {
+                        pins.classList.add("hidden");
+                    });
             });
     };
 
