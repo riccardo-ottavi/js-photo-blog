@@ -89,6 +89,10 @@ header {
     margin-bottom: 15px;
 }
 
+.pin {
+    position: absolute;
+}
+
 .card{
     background-color: white;
     padding-top: 15px;
